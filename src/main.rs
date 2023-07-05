@@ -11,7 +11,7 @@ struct Vehicle {
     title: String,
     price: u16,
     miles: u32,
-    registration_year: String,
+    registration_year: u16,
     data_layer: DataLayer,
 }
 
@@ -90,7 +90,7 @@ fn dummy_vehicle() -> Vehicle {
         title: String::new(),
         price: 0,
         miles: 0,
-        registration_year: String::new(),
+        registration_year: 0,
         data_layer: DataLayer {
             dealer: Dealer {
                 name: String::new()
@@ -125,8 +125,8 @@ async fn get_vehicles(page: Option<u16>) -> Result<ApiResponse, Box<dyn std::err
     let params = [
         ("step", String::from("carFilter")),
         ("model_category[]", String::from("127525")),
-        ("fuel_type[]", String::from("30664")),
-        ("au_model_year[0][0]", String::from("2021")),
+        ("fuel_type[]", String::from("887")),
+        ("registration_year[0][0]", String::from("2021")),
         ("badge_engine_cc[]", String::from("2554")),
         ("p", page.unwrap_or(1).to_string())
     ];
